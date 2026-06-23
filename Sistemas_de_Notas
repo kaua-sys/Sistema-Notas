@@ -1,0 +1,89 @@
+//Das variáveis do menu, da nota e da média
+let opcao = ""
+let notas = [] 
+let media 
+
+//while para repetir enquanto não escolher sair
+while (opcao != "5") {
+    
+//Criação do menu
+opcao = prompt(
+    `\n===== SISTEMA DE NOTAS =====
+
+1 - Adicionar nota
+2 - Ver média
+3 - Ver maior nota
+4 - Ver menor nota
+5 - Sair
+\nescolha uma opção: `
+);
+
+//Criação dos casos diferentes
+switch (opcao) {
+    case "1":
+    //adicionar nota
+    notas.push(Number(prompt("\nQual nota deseja adicionar: ")));
+    break;
+    
+    case "2":
+        //Ver média do aluno
+    if (notas.length == 0) {
+        console.log("Nenhuma nota cadastrada!");
+        break;
+    }
+
+    let soma = 0;
+
+    for (let i = 0; i < notas.length; i++) {
+        soma = soma + notas[i];
+    }
+
+    media = soma / notas.length;
+    console.log("A média desse aluno é: " + media);
+    break;
+        
+    case "3":
+        //Verificar maior nota do aluno
+    if  (notas.length == 0) {
+        console.log('Nenhuma nota cadastrada!')
+        break;
+    }
+
+        let maior = notas[0]
+        for (let i = 0; i < notas.length; i++) {
+            
+        //Comparar notas
+        if(notas[i] > maior ) {
+            maior = notas[i]
+        }
+        }
+        console.log("A maior nota desse aluno é: " + maior)
+        break;
+        
+    case "4":
+        //Verificar menor nota do aluno
+    if  (notas.length == 0) {
+        console.log('Nenhuma nota cadastrada!')
+        break;
+    }
+
+        let menor = notas[0]
+        for (let i = 0; i < notas.length; i++) {
+            
+        //Comparar notas
+        if(notas[i] < menor ) {
+            menor = notas[i]
+        }
+        }
+        console.log("A menor nota desse aluno é: " + menor)
+        break;
+
+    case "5":
+    console.log("Encerrando sistema...");
+    break;    
+        
+    default:
+    console.log("Opção inválida!");
+    break;
+}
+}
